@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashi's Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Maps API Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvlt7FEzQ-Nx8zYXX_UGMKOLqyJWnsT9o&callback=initMap" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Rashi's Birthday</h1>
+                <p>Celebrating the beautiful bond we share, no matter the distance.</p>
+                <a href="#celebrate" class="cta-button">Yayyyy</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="celebrate" class="celebrate-section">
+        <div class="section-content">
+            <h2>Our Journey Together</h2>
+            <p>From moments of laughter to memories we cherish, here’s to the friendship that keeps growing every day.</p>
+        </div>
+    </section>
+
+    <section id="playlist" class="playlist-section">
+        <div class="section-content">
+            <h2>Your Personalized Playlist</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3mrjwIyBJUHpRqgASGBibr?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- New Section for Google Maps and Animated Distance -->
+    <section id="map-distance" class="map-distance-section">
+        <div class="section-content">
+            <h2>Distance Between Us</h2>
+            <p>Here’s how far apart we are!</p>
+            <div id="map" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="notes-section">
+        <div class="notes-section">
+            <h2>Leave a Note!</h2>
+            <form id="notes-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="NOTES" placeholder="Write your note here..." required></textarea>
+                <button type="submit">Post Note</button>
+            </form>
+        </div>
+        
+        <div id="message-container" class="messages-container">
+            <h2>Notes:</h2>
+            <!-- Messages will be loaded here dynamically -->
+        </div>          
+    </section>
+
+    <!-- Game Section with Button -->
+    <section id="game" class="game-section">
+        <div class="section-content">
+            <h2>Stick Figure Shooter</h2>
+            <p>Test your skills and protect Sheersh from his enemies!</p>
+            <br></br>
+            <a href="game.html" class="cta-button">Play the Game</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 All Rights Reserved. Crafted with love by Malay.</p>
+    </footer>
+
+    <!-- Include Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

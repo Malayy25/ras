@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashi's Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Maps API Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvlt7FEzQ-Nx8zYXX_UGMKOLqyJWnsT9o&callback=initMap" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Rashi's Birthday Surprise</h1>
+                <p>Celebrating the beautiful bond we share, no matter the distance.</p>
+                <a href="#celebrate" class="cta-button">Join the Celebration</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="celebrate" class="celebrate-section">
+        <div class="section-content">
+            <h2>Our Journey Together</h2>
+            <p>From moments of laughter to memories we cherish, here’s to the friendship that keeps growing every day.</p>
+        </div>
+    </section>
+
+    <section id="playlist" class="playlist-section">
+        <div class="section-content">
+            <h2>Your Personalized Playlist</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3mrjwIyBJUHpRqgASGBibr?utm_source=generator" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="map-distance" class="map-distance-section">
+        <div class="section-content">
+            <h2>Distance Between Us</h2>
+            <p>Here’s how far apart we are!</p>
+            <div id="map" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+            <div class="distance-container">
+                <h3>We are:</h3>
+                <p id="animated-distance">0 kilometers</p>
+                <label>
+                    <input type="checkbox" id="unit-toggle" />
+                    Show in miles
+                </label>
+                <p id="travel-time"></p>
+                <button id="reset-map">Reset Map View</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="notes" class="notes-section">
+        <div class="section-content">
+            <h2>Leave a Message!</h2>
+            <form id="notes-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="message" placeholder="Write your message here..." required></textarea>
+                <button type="submit">Post Message</button>
+            </form>
+            <button id="clear-messages">Clear All Messages</button>
+        </div>
+        
+        <div id="message-container" class="messages-container">
+            <h2>Messages:</h2>
+            <!-- Messages will be loaded here dynamically -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 All Rights Reserved. Crafted with love by Malay.</p>
+    </footer>
+
+    <script>
+        let map, flightPath, bounds;
+
+        function initMap() {
+            const myLocation = { lat: 33.42365674532865, lng: -111.93258955372863 }; // Your location
+            const rashiLocation = { lat: 19.122305627977454, lng: 72.99965065529193 }; // Rashi's location
+
+            // Initialize map
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLocation,
+            });
+
+            // Markers
+            const myMarker = new google.maps.Marker({
+                position: myLocation,
+                map: map,
+                title: "Your Location",
+            });
+
+            const rashiMarker = new google.maps.Marker({
+                position: rashiLocation,
+                map: map,
+                title: "Rashi's Location",
+            });
+
+            // Polyline connecting the two locations
+            flightPath = new google.maps.Polyline({
+                path: [myLocation, rashiLocation],
+                geodesic: true,
+                strokeColor: "#FF5733",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+            });
+            flightPath.setMap(map);
+
+            // Fit map bounds to include both markers
+            bounds = new google.maps.LatLngBounds();
+            bounds.extend(myLocation);
+            bounds.extend(rashiLocation);
+            map.fitBounds(bounds);
+
+            // Add travel mode selection
+            calculateDistance(myLocation, rashiLocation, google.maps.TravelMode.DRIVING);
+        }
+
+        function calculateDistance(origin, destination, travelMode) {
+            const service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+                {
+                    origins: [origin],
+                    destinations: [destination],
+                    travelMode: travelMode,
+                },
+                (response, status) => {
+                    if (status === "OK") {
+                        const distanceText = response.rows[0].elements[0].distance.text;
+                        const durationText = response.rows[0].elements[0].duration.text;
+                        const distanceMeters = response.rows[0].elements[0].distance.value;
+
+                        // Animate distance
+                        animateDistance(distanceMeters, distanceText, durationText);
+                    } else {
+                        console.error("Distance Matrix API error:", status);
+                    }
+                }
+            );
+        }
+
+        function animateDistance(distanceMeters, distanceText, durationText) {
+            const distanceKm = distanceMeters / 1000;
+            const displayElement = document.getElementById("animated-distance");
+            const durationElement = document.getElementById("travel-time");
+            const unitToggle = document.getElementById("unit-toggle");
+
+            let currentDistance = 0;
+            const animationInterval = setInterval(() => {
+                if (currentDistance >= distanceKm) {
+                    clearInterval(animationInterval);
+                    durationElement.textContent = `Approximately ${durationText} to meet!`;
+                    return;
+                }
+                currentDistance += 0.1;
+
+                if (unitToggle.checked) {
+                    displayElement.textContent = `${(currentDistance * 0.621371).toFixed(2)} miles`;
+                } else {
+                    displayElement.textContent = `${currentDistance.toFixed(2)} kilometers`;
+                }
+            }, 50);
+        }
+
+        document.getElementById("reset-map").addEventListener("click", () => {
+            map.fitBounds(bounds);
+        });
+
+        document.getElementById("notes-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+
+            if (name && message) {
+                const messageContainer = document.getElementById("message-container");
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+
+                const timestamp = new Date().toLocaleString();
+                messageElement.innerHTML = `
+                    <h3>${name}</h3>
+                    <p>${message}</p>
+                    <small>${timestamp}</small>
+                `;
+
+                messageContainer.appendChild(messageElement);
+
+                document.getElementById("name").value = "";
+                document.getElementById("message").value = "";
+            } else {
+                alert("Please fill in both your name and message.");
+            }
+        });
+
+        document.getElementById("clear-messages").addEventListener("click", () => {
+            document.getElementById("message-container").innerHTML = "";
+        });
+    </script>
+</body>
+</html>

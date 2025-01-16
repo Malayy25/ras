@@ -1,0 +1,379 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Changed to Poppins for better readability */
+    background-color: #121212;
+    color: #f9f9f9;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+header {
+    position: relative;
+    height: 60vh;
+    background-color: #FF6F91;
+    background-image: linear-gradient(135deg, #FFB6C1, #FF6F91);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem; /* Increased font size */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.3rem; /* Slightly bigger text for clarity */
+    margin-bottom: 30px;
+    opacity: 0.85;
+}
+
+.cta-button {
+    font-size: 1.3rem; /* Larger button text */
+    padding: 15px 50px; /* More spacious button */
+    background-color: #fff;
+    color: #FF6F91;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Added letter-spacing for a modern look */
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #FF6F91;
+}
+
+.cta-button:hover {
+    background-color: #FF6F91;
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 20px; /* Added more padding for spaciousness */
+    text-align: center;
+    background-color: #2c2c2c;
+    color: #f9f9f9;
+}
+
+section h2 {
+    font-size: 2.8rem; /* Larger heading */
+    color: #FF6F91;
+    margin-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+section p {
+    font-size: 1.1rem;
+    color: #ddd;
+    line-height: 1.7;
+}
+
+/* Notes Section */
+.notes-section {
+    background-color: #1f1f1f;
+    padding: 60px 20px; /* Increased padding */
+    margin-top: 50px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+.notes-section h2 {
+    font-size: 2.2rem; /* Larger heading */
+    color: #FF6F91;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.notes-section form {
+    margin-bottom: 20px;
+}
+
+.notes-section input,
+.notes-section textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.2rem; /* Increased font size */
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+.notes-section button {
+    background-color: #ff5e5e;
+    color: white;
+    padding: 15px 25px; /* Spacious button */
+    border: none;
+    border-radius: 50px; /* Rounded button */
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.notes-section button:hover {
+    background-color: #ff4d4d;
+    transform: translateY(-3px); /* Hover effect */
+}
+
+/* Message Styles */
+.messages-container {
+    margin-top: 40px;
+}
+
+.message {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.message:hover {
+    transform: translateY(-5px);
+}
+
+.message strong {
+    font-size: 1.3em;
+    color: #333;
+}
+
+.message span {
+    font-size: 1em;
+    color: #888;
+}
+
+.message p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Playlist Section */
+.playlist-section iframe {
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+}
+
+.playlist-section {
+    padding: 4rem;
+    background-color: #111;
+    color: white;
+    text-align: center;
+    margin-bottom: 4rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.playlist-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #121212;
+    color: #ddd;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+        padding: 14px 40px;
+    }
+
+    section h2 {
+        font-size: 2.5rem;
+    }
+
+    .messages-container {
+        margin-top: 20px;
+    }
+}
+/* Map & Distance Section */
+.map-distance-section {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.map-distance-section h2 {
+    font-size: 2.5rem;
+    color: #FF6F91;
+    margin-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.map-distance-section #map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.map-distance-section #distance {
+    font-size: 1.5rem;
+    color: #FF6F91;
+    margin-top: 20px;
+}
+.distance-container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#animated-distance {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff69b4;
+    transition: color 0.3s ease;
+}
+
+#travel-time {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+/* Map & Distance Section */
+.map-distance-section {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.map-distance-section h2 {
+    font-size: 2.5rem;
+    color: #FF6F91;
+    margin-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.map-distance-section #map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.map-distance-section #distance {
+    font-size: 1.5rem;
+    color: #FF6F91;
+    margin-top: 20px;
+}
+
+.distance-container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#animated-distance {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff69b4;
+    transition: color 0.3s ease;
+}
+
+#travel-time {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Disable checkbox and select styles when inactive */
+#unit-toggle:disabled, #travel-mode:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Style for messages */
+.messages-container .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.messages-container .message h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.messages-container .message p {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.messages-container .message p:last-child {
+    font-size: 0.9em;
+    color: #666;
+}
+/* Style for messages */
+.messages-container .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.messages-container .message h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;  /* Make the name bold and black */
+}
+
+.messages-container .message p {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.messages-container .message p:last-child {
+    font-size: 0.9em;
+    color: #666;
+}
